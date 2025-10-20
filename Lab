@@ -357,5 +357,27 @@ int calculate_score(char* sample_segment, char* candidate_segment)
   int sample_length_in_codons = sample_length / 3;
 
   // Insert your code here (replace this return statement with your own code)
-  return 0;
+    for (int i = 0; i < candidate_length - sample_length; i += 3) {
+      temp_score = 0;
+      for (int j = 0; j < sample_length_in_codons; j++) {
+          if (strncmp() == 0) {
+              temp_score += 10;
+          }
+          else if () {
+              temp_score += 5;
+          }
+          else {
+              if () {
+                  temp_score += 2;
+              }
+              else if (is_base_pair() == 1) {
+                  temp_score += 1;
+              }
+          }
+      }
+  }
+  if (temp_score > score) {
+      score = temp_score;
+  }
+  return score;
 }
