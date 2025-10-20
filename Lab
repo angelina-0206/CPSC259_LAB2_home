@@ -357,21 +357,26 @@ int calculate_score(char* sample_segment, char* candidate_segment)
   int sample_length_in_codons = sample_length / 3;
 
   // Insert your code here (replace this return statement with your own code)
-    for (int i = 0; i < candidate_length - sample_length; i += 3) {
+
+  for (int i = 0; i < candidate_length - sample_length; i += 3) {
       temp_score = 0;
       for (int j = 0; j < sample_length_in_codons; j++) {
-          if (strncmp() == 0) {
+          char current_sample[4] = { sample_segment[j * 3], sample_segment[j * 3 + 1], sample_segment[j * 3 + 1], '\0' };
+          char current_candidate[4] = { candidate_segment[i + j * 3], candidate_segment[i + j * 3 + 1], candidate_segment[i + j * 3 + 1], '\0' };
+          if (strncmp(current_sample, current_candidate, 3) == 0) {
               temp_score += 10;
           }
-          else if () {
+          else if (codon_names[get_codon_index(current_sample)] == codon_names[get_codon_index(current_candidate)]) {
               temp_score += 5;
           }
           else {
-              if () {
-                  temp_score += 2;
-              }
-              else if (is_base_pair() == 1) {
-                  temp_score += 1;
+              for (int k = 0; k < 3; k++) {
+                  if(current_sample[k] == current_candidate[k]) {
+                      temp_score += 2;
+                  }
+                  else if (is_base_pair(current_sample[k], current_candidate[k])) {
+                      temp_score += 1;
+                  }
               }
           }
       }
