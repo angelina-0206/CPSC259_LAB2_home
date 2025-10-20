@@ -366,7 +366,7 @@ int calculate_score(char* sample_segment, char* candidate_segment)
           if (strncmp(current_sample, current_candidate, 3) == 0) {
               temp_score += 10;
           }
-          else if (codon_names[get_codon_index(current_sample)] == codon_names[get_codon_index(current_candidate)]) {
+          else if (strcmp(codon_names[get_codon_index(current_sample)], codon_names[get_codon_index(current_candidate)]) == 0) {
               temp_score += 5;
           }
           else {
