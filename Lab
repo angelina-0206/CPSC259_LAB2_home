@@ -262,7 +262,7 @@ void analyze_segments(char* sample_segment, char** candidate_segments, int numbe
      e.g. sprintf(int_buffer, "%d", i);
           strcat(outputline_buffer, "Candidate number ");
           strcat(outputline_buffer, int_buffer);
-          strcat(outputline_buffer, " is a perfect match\n");*/
+          strcat(outputline_buffer, " is a perfect match \n");*/
 
   // Insert your code here
   sample_length = strlen(sample_segment);
@@ -270,10 +270,11 @@ void analyze_segments(char* sample_segment, char** candidate_segments, int numbe
     candidate_length = strlen(candidate_segments[i]);
     if (sample_length == candidate_length && strncmp(sample_segment, candidate_segments[i], sample_length) == 0) {
       has_perfect_match = 1;
+	  outputline_buffer[0]='\0';
       sprintf(int_buffer, "%d", i + 1);
       strcat(outputline_buffer, "Candidate number ");
       strcat(outputline_buffer, int_buffer);
-      strcat(outputline_buffer, " is a perfect match\n");
+      strcat(outputline_buffer, " is a perfect match.\n");
 	  strcat(output_string, outputline_buffer);
     }
   }
@@ -358,7 +359,7 @@ int calculate_score(char* sample_segment, char* candidate_segment)
 
   // Insert your code here (replace this return statement with your own code)
 
-  for (int i = 0; i <= candidate_length - sample_length; i += 3) {
+  for (int i = 0; i <= candidate_length - sample_length_in_codons *3; i += 3) {
       temp_score = 0;
       for (int j = 0; j < sample_length_in_codons; j++) {
           char current_sample[4] = { sample_segment[j * 3], sample_segment[j * 3 + 1], sample_segment[j * 3 + 2], '\0' };
